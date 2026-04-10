@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walking Meditation — May 23rd</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    --gold:#d4a954;
+    --gold-light:#f0ddb0;
+    --warm-cream:#fdf6ec;
+    --deep:#1a1612;
+    --sage:#7a8c6e;
+    --sage-light:#c2ceaa;
+    --soft-peach:#f5ddd0;
+  }
+
+  body{
+    font-family:'Jost',sans-serif;
+    background:#0e0c0a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+  }
+
+  .flyer{
+    width:700px;
+    min-height:1000px;
+    position:relative;
+    overflow:hidden;
+    border-radius:6px;
+    background:var(--deep);
+  }
+
+  /* ---- HERO IMAGE AREA ---- */
+  .hero{
+    position:relative;
+    width:100%;
+    height:520px;
+    overflow:hidden;
+  }
+
+  .hero-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:brightness(0.9) saturate(1.25) contrast(1.05);
+  }
+
+  /* Soft gradient overlay fading into body */
+  .hero::after{
+    content:'';
+    position:absolute;
+    bottom:0;left:0;right:0;
+    height:220px;
+    background:linear-gradient(to top, var(--deep) 0%, transparent 100%);
+    pointer-events:none;
+  }
+
+  /* Top decorative glow */
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:-60px;left:50%;
+    transform:translateX(-50%);
+    width:600px;height:300px;
+    background:radial-gradient(ellipse,rgba(212,169,84,0.18) 0%,transparent 70%);
+    pointer-events:none;
+    z-index:2;
+  }
+
+  /* ---- FLOATING BADGE ---- */
+  .badge{
+    position:absolute;
+    top:28px;left:50%;
+    transform:translateX(-50%);
+    z-index:3;
+    background:rgba(26,22,18,0.55);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(212,169,84,0.35);
+    border-radius:50px;
+    padding:8px 28px;
+    font-family:'Jost',sans-serif;
+    font-weight:400;
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    white-space:nowrap;
+  }
+
+  /* ---- CONTENT BODY ---- */
+  .content{
+    position:relative;
+    z-index:2;
+    padding:0 52px 52px;
+    margin-top:-40px;
+    text-align:center;
+    color:var(--warm-cream);
+  }
+
+  .divider-ornament{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    margin-bottom:32px;
+  }
+  .divider-ornament span{
+    display:block;
+    width:48px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .divider-ornament .dot{
+    width:5px;height:5px;
+    border-radius:50%;
+    background:var(--gold);
+    flex-shrink:0;
+  }
+
+  .event-title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:15px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+
+  .main-title{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:400;
+    font-size:52px;
+    line-height:1.1;
+    color:var(--warm-cream);
+    margin-bottom:6px;
+  }
+  .main-title em{
+    font-style:italic;
+    font-weight:300;
+    color:var(--gold-light);
+  }
+
+  .subtitle{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-style:italic;
+    font-size:19px;
+    color:var(--sage-light);
+    margin-bottom:36px;
+  }
+
+  .info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:34px;
+    text-align:left;
+  }
+
+  .info-card{
+    background:rgba(255,255,255,0.035);
+    border:1px solid rgba(212,169,84,0.15);
+    border-radius:12px;
+    padding:22px 24px;
+  }
+
+  .info-card.full{
+    grid-column:1/-1;
+  }
+
+  .info-label{
+    font-size:10px;
+    letter-spacing:3.5px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+    font-weight:500;
+  }
+
+  .info-value{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    font-weight:400;
+    color:var(--warm-cream);
+    line-height:1.35;
+  }
+
+  .info-detail{
+    font-size:13px;
+    font-weight:300;
+    color:rgba(253,246,236,0.55);
+    margin-top:4px;
+    line-height:1.5;
+  }
+
+  /* ---- BRING SECTION ---- */
+  .bring{
+    display:flex;
+    justify-content:center;
+    gap:32px;
+    margin-bottom:36px;
+    flex-wrap:wrap;
+  }
+  .bring-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    font-weight:300;
+    color:rgba(253,246,236,0.7);
+  }
+  .bring-icon{
+    width:36px;height:36px;
+    border-radius:50%;
+    background:rgba(212,169,84,0.1);
+    border:1px solid rgba(212,169,84,0.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+    flex-shrink:0;
+  }
+
+  /* ---- INSPIRED BY ---- */
+  .inspired{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:rgba(253,246,236,0.35);
+    margin-bottom:8px;
+  }
+  .dispenza{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    font-weight:400;
+    font-style:italic;
+    color:var(--sage-light);
+    margin-bottom:28px;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer-line{
+    width:80px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:0 auto 18px;
+  }
+
+  .footer-text{
+    font-size:12px;
+    letter-spacing:1.5px;
+    color:rgba(253,246,236,0.3);
+    font-weight:300;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(24px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  .badge{animation:fadeIn 1s .2s both}
+  .divider-ornament{animation:fadeIn 1s .4s both}
+  .event-title{animation:fadeUp .8s .5s both}
+  .main-title{animation:fadeUp .8s .6s both}
+  .subtitle{animation:fadeUp .8s .7s both}
+  .info-grid{animation:fadeUp .8s .85s both}
+  .bring{animation:fadeUp .8s 1s both}
+  .inspired,.dispenza{animation:fadeUp .8s 1.1s both}
+
+  /* Print-friendly */
+  @media print{
+    body{background:#fff;padding:0}
+    .flyer{border-radius:0;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- HERO -->
+  <div class="hero">
+    <img class="hero-img" src="https://images.squarespace-cdn.com/content/v1/64a45ef476ba7825f7376122/83310acd-3b1c-40f5-93aa-acf1c4902b32/440295572_852128150291665_5308040512950060823_n.jpg?format=1500w" alt="Aerial view of Willow Waterhole"/>
+    <div class="badge">You Are Invited</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="divider-ornament">
+      <span></span><div class="dot"></div><span></span>
+    </div>
+
+    <div class="event-title">A Guided Experience</div>
+
+    <h1 class="main-title">Walking<br><em>Meditation</em></h1>
+
+    <p class="subtitle">Awaken your body, still your mind, embrace the morning.</p>
+
+    <!-- INFO CARDS -->
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-label">Date</div>
+        <div class="info-value">Friday, May 23rd</div>
+        <div class="info-detail">2026</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-label">Time</div>
+        <div class="info-value">8:00 AM Arrival</div>
+        <div class="info-detail">Meditation begins at 8:15 AM</div>
+      </div>
+
+      <div class="info-card full">
+        <div class="info-label">Location</div>
+        <div class="info-value">Willow Waterhole</div>
+        <div class="info-detail" style="font-style:italic;color:var(--sage-light);margin-bottom:4px">A piece of peace in the city</div>
+        <div class="info-detail">5330 Dryad Dr, Houston, TX 77035<br>Address leads directly to the parking lot</div>
+      </div>
+
+    </div>
+
+    <!-- WHAT TO BRING -->
+    <div class="bring">
+      <div class="bring-item"><div class="bring-icon">🎧</div> Headphones</div>
+      <div class="bring-item"><div class="bring-icon">🚶</div> Comfortable shoes</div>
+      <div class="bring-item"><div class="bring-icon">💧</div> Water bottle</div>
+    </div>
+
+    <!-- INSPIRED BY -->
+    <div class="inspired">Inspired by the teachings of</div>
+    <div class="dispenza">Dr. Joe Dispenza</div>
+
+    <div class="footer-line"></div>
+    <div class="footer-text">Come as you are. Leave transformed.</div>
+
+  </div>
+</div>
+
+</body>
+</html>
